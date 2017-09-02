@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 15eb4dc60cdb5b44fb59c946df13e49c
+timeCreated: 1503497318
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Street Block
+  fontNames:
+  - Street Block
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
