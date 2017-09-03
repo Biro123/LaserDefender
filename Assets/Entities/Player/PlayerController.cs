@@ -6,6 +6,9 @@ public class PlayerController : MonoBehaviour {
 
     public float moveSpeed = 5.0f;
     public float padding = 1.0f;
+    public GameObject projectilePrefab;
+    public float projectileSpeed = 10;
+    public float fireRate = 0.2f;
 
     float xMin;
     float xMax;
@@ -31,6 +34,7 @@ public class PlayerController : MonoBehaviour {
         /// efficient than using a clamp to reset it afterwards.
         if( Input.GetKey(KeyCode.LeftArrow) )
         {
+            
             if (this.transform.position.x >= xMin)
             {
                 this.transform.position += Vector3.left * moveSpeed * Time.deltaTime;
@@ -44,5 +48,23 @@ public class PlayerController : MonoBehaviour {
             }
         }
 
+        /// Firing Code
+        if (Input.GetKeyDown(KeyCode.Space ) )
+        {
+            InvokeRepeating("Fire", 0.000001f, fireRate);
+        }
+        else if (Input.GetKeyUp(KeyCode.Space))
+        {
+            CancelInvoke("Fire");
+        }
+
     }
+
+    //  Fires a single Projectile
+    private void Fire()
+    {
+        GameObject projectile = Instantiate(projectilePrefab, this.transform.position, Quaternion.identity) as GameObject;
+        projectile.GetComponent<Rigidbody2D>().velocity = new Vector3(0, projectileSpeed);
+    }
+
 }

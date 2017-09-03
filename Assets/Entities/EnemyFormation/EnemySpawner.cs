@@ -11,6 +11,7 @@ public class EnemySpawner : MonoBehaviour {
 
     private float xMin;
     private float xMax;
+    private bool movingLeft = true;
 
     // Use this for initialization
     void Start () {
@@ -21,7 +22,6 @@ public class EnemySpawner : MonoBehaviour {
         Vector3 rightBoundary = Camera.main.ViewportToWorldPoint(new Vector3(1, 0, distanceToCamera));
         xMin = leftBoundary.x;
         xMax = rightBoundary.x; 
-        print ("xMax: " + xMax);
 
         /// for every transform child in my-transform (ie every Position in EnemyFormation)
         foreach ( Transform child in transform)
@@ -42,18 +42,19 @@ public class EnemySpawner : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        if (moveSpeed < 0)   /// moving left  
+        /// Move formation left and right within the bounds of the cameraview
+        if (movingLeft)  
         {
             if (this.transform.position.x - width/2 >= xMin) {
-                this.transform.position += new Vector3(moveSpeed * Time.deltaTime, 0, 0);
+                this.transform.position += Vector3.left * moveSpeed * Time.deltaTime;
             } else {
-                moveSpeed = moveSpeed * -1;   // reverse direction
+                movingLeft = false;   // reverse direction
             }
         } else {   /// moving right 
             if (this.transform.position.x + width/2 <= xMax) {
-                this.transform.position += new Vector3(moveSpeed * Time.deltaTime, 0, 0);
+                this.transform.position += Vector3.right * moveSpeed * Time.deltaTime;
             } else {
-                moveSpeed = moveSpeed * -1;   // reverse direction
+                movingLeft = true;   // reverse direction
             }
         }
         
