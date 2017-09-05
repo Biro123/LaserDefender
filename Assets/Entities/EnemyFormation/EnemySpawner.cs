@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -21,17 +22,23 @@ public class EnemySpawner : MonoBehaviour {
         Vector3 leftBoundary = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, distanceToCamera));
         Vector3 rightBoundary = Camera.main.ViewportToWorldPoint(new Vector3(1, 0, distanceToCamera));
         xMin = leftBoundary.x;
-        xMax = rightBoundary.x; 
+        xMax = rightBoundary.x;
 
+        SpawnEnemiesAtPositions();
+
+	}
+
+    private void SpawnEnemiesAtPositions()
+    {
         /// for every transform child in my-transform (ie every Position in EnemyFormation)
-        foreach ( Transform child in transform)
+        foreach (Transform child in transform)
         {
             /// Spawn an enemy at the position of the child (ie, Position object)
             GameObject enemy = Instantiate(enemyPrefab, child.transform.position, Quaternion.identity) as GameObject;
             /// Move it under the child (ie Position) of this object(EnemyFormation) in the hierarch 
             enemy.transform.parent = child;
         }
-	}
+    }
 
     // Draws a gizmo to show the area of the whole formation in the editor
     public void OnDrawGizmos()
@@ -57,6 +64,30 @@ public class EnemySpawner : MonoBehaviour {
                 movingLeft = true;   // reverse direction
             }
         }
+
+        if ( AllMembersDead() )
+        {
+            Debug.Log("Empty formation");
+            SpawnEnemiesAtPositions();
+        }
         
+    }
+
+    private bool AllMembersDead()
+    {
+        // transform.childcount will return the number of positions within the formation,
+        // but not whether the enemy attached to that position (its child) still exists
+        // so we have to loop around each position and check if its chile(enemy) exists.
+
+        // loop around child trandforms (enemies) within our transform(formation)
+        // if any enemies exists, return false (not all destroyed)
+        foreach (Transform childPositionGameObject in transform)
+        {
+            if (childPositionGameObject.childCount > 0 )
+            {
+                return false;
+            }
+        }
+        return true;
     }
 }

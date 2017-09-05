@@ -68,7 +68,6 @@ public class PlayerController : MonoBehaviour {
         EnemyProjectile collidingProjectile = collider.gameObject.GetComponent<EnemyProjectile>();
         if (collidingProjectile)
         {
-            Debug.Log("Player Hit");
             health -= collidingProjectile.GetDamage();
             collidingProjectile.Hit();
             if (health <= 0f)
