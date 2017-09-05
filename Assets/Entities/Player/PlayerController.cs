@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour {
     public GameObject projectilePrefab;
     public float projectileSpeed = 10;
     public float fireRate = 0.2f;
+    public float health = 250f;
 
     float xMin;
     float xMax;
@@ -59,6 +60,26 @@ public class PlayerController : MonoBehaviour {
         }
 
     }
+
+    private void OnTriggerEnter2D(Collider2D collider)
+    {
+        /// Check if it is a player projectile which hit and store it as    
+        /// collidingProjectile (will be null of not a player projectile
+        EnemyProjectile collidingProjectile = collider.gameObject.GetComponent<EnemyProjectile>();
+        if (collidingProjectile)
+        {
+            Debug.Log("Player Hit");
+            health -= collidingProjectile.GetDamage();
+            collidingProjectile.Hit();
+            if (health <= 0f)
+            {
+                Destroy(gameObject);
+            }
+
+        }
+    }
+
+
 
     //  Fires a single Projectile
     private void Fire()
