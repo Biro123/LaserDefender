@@ -9,6 +9,10 @@ public class Enemy : MonoBehaviour {
     public GameObject projectilePrefab;
     public float projectileSpeed = 10;
     public float fireRate = 1.0f;
+    public int scoreValue = 10;
+    public AudioClip destroyedSound;
+
+    private ScoreKeeper scoreKeeper;
 
     // Use this for initialization
     void Start () {
@@ -16,6 +20,9 @@ public class Enemy : MonoBehaviour {
         // and start them firing
         float randomFireRate = fireRate * (UnityEngine.Random.value + 0.5f) ;
         InvokeRepeating("Fire", randomFireRate, randomFireRate);
+
+        scoreKeeper = GameObject.Find("Score").GetComponent<ScoreKeeper>();
+
     }
 
     private void OnTriggerEnter2D(Collider2D collider)
@@ -25,11 +32,15 @@ public class Enemy : MonoBehaviour {
         Projectile collidingProjectile = collider.gameObject.GetComponent<Projectile>();
         if ( collidingProjectile ) 
         {
+            GetComponent<AudioSource>().Play();
             health -= collidingProjectile.GetDamage();
             collidingProjectile.Hit();
             if (health <= 0f)
             {
+                //Play sound at camera as it was too quiet
+                AudioSource.PlayClipAtPoint(destroyedSound, Camera.main.transform.position, 1f);
                 Destroy(gameObject);
+                scoreKeeper.Score(scoreValue);
             }
         }
     }

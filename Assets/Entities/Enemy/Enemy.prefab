@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 60110193025133508}
   - component: {fileID: 114233757362373406}
   - component: {fileID: 95212050120423682}
+  - component: {fileID: 82023571734815084}
   m_Layer: 9
   m_Name: Enemy
   m_TagString: Untagged
@@ -107,6 +108,86 @@ PolygonCollider2D:
       - {x: 0.185, y: -0.37}
       - {x: 0.285, y: -0.34}
       - {x: 0.305, y: -0.29999998}
+--- !u!82 &82023571734815084
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1941034456869964}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: e1b7df7f5255e6d4cbdb772cbba6faed, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.6
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!95 &95212050120423682
 Animator:
   serializedVersion: 3
@@ -140,6 +221,8 @@ MonoBehaviour:
     type: 2}
   projectileSpeed: 5
   fireRate: 3
+  scoreValue: 10
+  destroyedSound: {fileID: 8300000, guid: 47aa0067d6dc28940ad126f125137541, type: 3}
 --- !u!212 &212576913209696400
 SpriteRenderer:
   m_ObjectHideFlags: 1
