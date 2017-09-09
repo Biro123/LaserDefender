@@ -144,8 +144,8 @@ MonoBehaviour:
   projectilePrefab: {fileID: 1325109200916546, guid: 583a8f3ec7fbd5144a82c95d46e4b8f3,
     type: 2}
   projectileSpeed: 10
-  fireRate: 0.2
-  health: 250
+  fireRate: 0.3
+  health: 200
 --- !u!198 &198952269492854706
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -3489,8 +3489,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1529571143
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 69f0b622a843f704892721132889b57a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

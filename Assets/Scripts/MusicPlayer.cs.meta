@@ -1,10 +1,13 @@
 fileFormatVersion: 2
 guid: 3e127d041a4b43b41b0f22ed413fa979
-timeCreated: 1503505992
+timeCreated: 1504915244
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - startClip: {instanceID: 0}
+  - gameClip: {instanceID: 0}
+  - endClip: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

@@ -9,7 +9,7 @@ public class LevelManager : MonoBehaviour {
     {
         if (name == "Level_01")
         {
-            Score.score = 0;
+            ScoreKeeper.score = 0;
             Lives.lives = 3;
         }
 

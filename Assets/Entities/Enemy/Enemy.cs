@@ -38,7 +38,7 @@ public class Enemy : MonoBehaviour {
             if (health <= 0f)
             {
                 //Play sound at camera as it was too quiet
-                AudioSource.PlayClipAtPoint(destroyedSound, Camera.main.transform.position, 1f);
+                AudioSource.PlayClipAtPoint(destroyedSound, Camera.main.transform.position, 0.8f);
                 Destroy(gameObject);
                 scoreKeeper.Score(scoreValue);
             }

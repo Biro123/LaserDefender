@@ -72,19 +72,23 @@ public class PlayerController : MonoBehaviour {
             collidingProjectile.Hit();
             if (health <= 0f)
             {
-                Destroy(gameObject);
+                Die();
             }
 
         }
     }
-
-
-
+        
     //  Fires a single Projectile
     private void Fire()
     {
         GameObject projectile = Instantiate(projectilePrefab, this.transform.position, Quaternion.identity) as GameObject;
         projectile.GetComponent<Rigidbody2D>().velocity = new Vector3(0, projectileSpeed);
+    }
+
+    private void Die()
+    {
+        GameObject.FindObjectOfType<LevelManager>().GetComponent<LevelManager>().LoadLevel("GameOver");
+        Destroy(gameObject);
     }
 
 }
